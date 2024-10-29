@@ -126,13 +126,20 @@
     </div>
 </div>
 <div class="catalog">
-    <div class="product">
-        <img src="{% static 'main/image/1.png' %}" alt="Товар 1">
-        <h3>Saeda 100</h3>
-        <p>Ivory Satin Pumps with Crystal Embellishment</p>
-    <p>Цена($): <span class="price">1125</span></p>
-        <div class="add-to-cart-button">Добавить в корзину</div>
-    </div>
+    {% for product in products %}
+        <div class="product">
+            {% if product.image %}
+                <img src="media/{{ product.image }}" alt="">
+            {% else %}
+                <img src="{% static 'main/image/no-image.jpg' %}" alt="картинка не найдена">
+            {% endif %}
+            <h3>{{ product.name}}</h3>
+            <p>{{ product.description }}</p>
+        <p>Цена($): <span class="price">{{ product.price }}</span></p>
+            <div class="add-to-cart-button">Добавить в корзину</div>
+        </div>
+     {% endfor %}
+    <!--
     <div class="product">
         <img src="{% static 'main/image/2.png' %}" alt="Товар 2">
         <h3>Amita Flowers 45</h3>
@@ -182,6 +189,8 @@
         <p>Цена($): <span class="price">1595</span></p>
         <div class="add-to-cart-button">Добавить в корзину</div>
     </div>
+    -->
+
 </div>
 <div class="container">
   <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from main.models import Product
+
 
 def index(request):
     return render(request, 'main/index.html')
@@ -10,7 +12,8 @@ def about(request):
 
 
 def ctl(request):
-    return render(request, "main/ctl.html")
+    products = Product.objects.all()
+    return render(request, "main/ctl.html", {'products': products})
 
 
 def contacts(request):
