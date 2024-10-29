@@ -1,0 +1,170 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Оплата
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-5">Оплата</h1>
+    <div id="selected-items" class="mt-4"></div>
+    <h4 id="total-amount" class="mb-4">Итого к оплате: $0</h4>
+        <form class="needs-validation" novalidate>
+        <h4 class="mb-3">Данные для оплаты</h4>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="firstName" class="form-label">Имя</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Имя обязательно
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="lastName" class="form-label">Фамилия</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Фамилия обязательна
+                </div>
+            </div>
+            <div class="col-md-12">
+                <label for="username" class="form-label">Имя пользователя</label>
+                <div class="input-group has-validation">
+                    <span class="input-group-text">@</span>
+                    <input type="text" class="form-control" id="username" placeholder="Username" required>
+                    <div class="invalid-feedback">
+                        Ваше имя пользователя обязательно
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="address" class="form-label">Адрес</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                <div class="invalid-feedback">
+                    Введите ваш адрес доставки
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="address2" class="form-label">Адрес 2 <span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+            </div>
+            <div class="col-md-5">
+    <label for="country" class="form-label">Страна</label>
+    <select class="form-select" id="country" required>
+        <option value="">Выберите...</option>
+        <option>США</option>
+        <option>Канада</option>
+        <option>Великобритания</option>
+        <option>Германия</option>
+        <option>Франция</option>
+    </select>
+    <div class="invalid-feedback">
+        Выберите действительную страну.
+    </div>
+</div>
+<div class="col-md-4">
+    <label for="state" class="form-label">Область</label>
+    <select class="form-select" id="state" required>
+        <option value="">Выберите...</option>
+        <option>Калифорния</option>
+        <option>Техас</option>
+        <option>Флорида</option>
+        <option>Нью-Йорк</option>
+        <option>Иллинойс</option>
+    </select>
+    <div class="invalid-feedback">
+        Выберите действительную область.
+    </div>
+</div>
+            <div class="col-md-3">
+                <label for="zip" class="form-label">Почтовый индекс</label>
+                <input type="text" class="form-control" id="zip" placeholder="" required>
+                <div class="invalid-feedback">
+                    Почтовый индекс обязателен для доставки.
+                </div>
+            </div>
+            <hr class="my-4">
+            <h4 class="mb-3">Оплата</h4>
+            <div class="my-3">
+                <div class="form-check">
+                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                    <label class="form-check-label" for="credit">Кредитная карта</label>
+                </div>
+                <div class="form-check">
+                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                    <label class="form-check-label" for="debit">Дебетовая карта</label>
+                </div>
+                <div class="form-check">
+                    <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                    <label class="form-check-label" for="paypal">PayPal</label>
+                </div>
+            </div>
+            <div class="row gy-3">
+                <div class="col-md-6">
+                    <label for="cc-name" class="form-label">Имя на карте</label>
+                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                    <small class="text-muted">Полное имя, как указано на карте</small>
+                    <div class="invalid-feedback">
+                        Имя на карте обязательно
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="cc-number" class="form-label">Номер кредитной карты</label>
+                    <input type="text" class="form-control" id="cc-number" required>
+                    <div class="invalid-feedback">
+                        Номер кредитной карты обязателен
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="cc-expiration" class="form-label">Срок действия</label>
+                    <input type="text" class="form-control" id="cc-expiration" required>
+                    <div class="invalid-feedback">
+                        Требуется срок действия
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="cc-cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cc-cvv" required>
+                    <div class="invalid-feedback">
+                        CVV обязателен
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <button             class="btn btn-primary btn-lg btn-block" type="submit">Оплатить</button>
+        </div>
+    </form>
+</div>
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const selectedItems = JSON.parse(sessionStorage.getItem("selectedItems")) || [];
+            const selectedItemsContainer = document.getElementById("selected-items");
+
+            if (selectedItems.length > 0) {
+                let totalAmount = 0;
+
+                selectedItems.forEach(item => {
+                    totalAmount += parseFloat(item.price.replace("$", ""));
+                    const itemElement = document.createElement("div");
+                    itemElement.innerHTML = `
+                        <p><strong>Наименование товара:</strong> ${item.name}</p>
+                        <p><strong>Цена($):</strong> ${item.price}</p>
+                        <hr>
+                    `;
+                    selectedItemsContainer.appendChild(itemElement);
+                });
+
+                const totalAmountElement = document.getElementById("total-amount");
+                totalAmountElement.textContent = `Итого к оплате: $${totalAmount.toFixed(2)}`;
+            } else {
+                selectedItemsContainer.innerHTML = "<p>Нет выбранных товаров для оплаты.</p>";
+            }
+        });
+    </script>
+{% endblock %}

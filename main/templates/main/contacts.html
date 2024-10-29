@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Контакты
+{% endblock %}
+
+{% block content %}
+    <style>
+        .contacts-container {
+            width: 80%;
+            margin: 20px auto;
+            font-family: "Candara";
+            line-height: 1.6;
+            color: #333;
+        }
+        .contacts-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .contacts-container li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 5px solid #afc8ff;
+        }
+        .contacts-container .country {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        h1 {
+        font-size: 2.4em;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    </style>
+    <div class="contacts-container">
+        <h1>Контакты</h1>
+        <ul>
+            <li>
+                <div class="country">UK & Europe</div>
+                <div>europerecruitment@jimmychoo.com</div>
+            </li>
+            <li>
+                <div class="country">US</div>
+                <div>usrecruitment@jimmychoo.com</div>
+            </li>
+            <li>
+                <div class="country">Asia (China and Hong Kong, China)</div>
+                <div>asiarecruitment@jimmychoo.com</div>
+                <div>hkrecruitment@jimmychoo.com</div>
+            </li>
+            <li>
+                <div class="country">Japan</div>
+                <div>recruitjapan@jimmychoo.com</div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

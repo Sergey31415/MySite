@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <style>
+        {% load static %}
+        body {
+            font-family: "Candara";
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .video-container video {
+            min-width: 100%;
+            min-height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type=email], input[type=password] {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .remember-me-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .remember-me-container input {
+            margin-right: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #5cacf2;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+        a {
+            color: #5cacf2;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+ {% load static %}
+<div class="video-container">
+    <video controls autoplay muted loop>
+        <source src="{% static 'main/image/JC2.webm' %}" type="video/webm">
+        Ваш браузер не поддерживает видео в формате WebM.
+    </video>
+</div>
+    <div class="login-container">
+        <h1>Вход</h1>
+        <form>
+            <input type="email" placeholder="Эл. почта">
+            <input type="password" placeholder="Пароль">
+            <div class="remember-me-container">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Запомнить меня</label>
+            </div>
+            <button type="submit">Войти</button>
+        </form>
+        <div class="footer">
+            <a href="#">Забыли пароль?</a>
+        </div>
+        <div class="footer">
+            Нет учетной записи? <a href="#">Создать учетную запись</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Корзина
+{% endblock %}
+
+{% block content %}
+<style>
+    h1 {
+        font-size: 2.3em;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .cart-product {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        box-sizing: border-box;
+        width: calc(20% - 20px);
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        vertical-align: top;
+        position: relative;
+    }
+    .cart-product img {
+        max-width: 100%;
+        border-radius: 5px;
+        height: auto;
+    }
+    .cart-product h3 {
+        margin: 5px 0;
+        font-size: 18px;
+    }
+    .cart-product p {
+        font-size: 0.9em;
+        color: #555;
+        margin-bottom: auto;
+    }
+    .cart-product .price {
+        font-weight: bold;
+        color: #333;
+    }
+    .checkout-btn {
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        background-color: #5cacf2;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .checkout-btn:hover {
+        background-color: #afc8ff;
+    }
+    .delete-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: #ff0000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    .delete-btn:hover {
+        background-color: #ff8989;
+    }
+</style>
+
+<h1>Корзина</h1>
+
+<div id="select-all-btn" style="border: 1px solid #ddd; display: inline-block; padding: 5px; margin-bottom: 20px;">Выбрать всё</div>
+
+<div id="cart-items"></div>
+
+<div id="checkout-btn" class="checkout-btn">Оплатить</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+        const cartContainer = document.getElementById("cart-items");
+
+        if (cartItems.length > 0) {
+            renderCartItems();
+        } else {
+            cartContainer.innerHTML = "<p>Ваша корзина пуста</p>";
+        }
+
+        document.getElementById("select-all-btn").addEventListener("click", function () {
+            const checkboxes = document.querySelectorAll(".cart-checkbox");
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = !checkbox.checked;
+            });
+        });
+
+        document.getElementById("checkout-btn").addEventListener("click", function () {
+            const selectedItems = [];
+            const checkboxes = document.querySelectorAll(".cart-checkbox");
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const card = checkbox.closest('.cart-product');
+                    const name = card.querySelector('h3').textContent;
+                    const price = card.querySelector('.price').textContent;
+                    selectedItems.push({ name, price });
+                }
+            });
+            sessionStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+            window.location.href = "/pay";
+        });
+
+        function renderCartItems() {
+            cartContainer.innerHTML = "";
+
+            cartItems.forEach(item => {
+                const productCard = createProductCard(item);
+                cartContainer.appendChild(productCard);
+            });
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement("div");
+            card.classList.add("cart-product");
+
+            const img = document.createElement("img");
+            img.src = product.img;
+            img.alt = product.name;
+            card.appendChild(img);
+
+            const name = document.createElement("h3");
+            name.textContent = product.name;
+            card.appendChild(name);
+
+            const price = document.createElement("p");
+            price.classList.add("price");
+            price.textContent = product.price;
+            card.appendChild(price);
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.classList.add("cart-checkbox");
+            card.appendChild(checkbox);
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.classList.add("delete-btn");
+            deleteBtn.textContent = "×";
+            deleteBtn.addEventListener("click", function () {
+                cartContainer.removeChild(card);
+                cartItems = cartItems.filter(item => item.id !== product.id);
+                sessionStorage.setItem("cart", JSON.stringify(cartItems));
+            });
+            card.appendChild(deleteBtn);
+
+            return card;
+        }
+    });
+</script>
+{% endblock %}
