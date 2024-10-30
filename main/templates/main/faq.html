@@ -43,113 +43,16 @@ FAQs
 <div class="cs-content-panel">
     <div class="content-asset" data-assetid="frequently-asked-questions">
         <div class="cms_accordion">
-            <div class="cms_accordion_group">
-                <div class="js-keyboard-clickable cms_accordion_title">
-                    <h3 class="cms_accordion_name">Нужно ли создавать учетную запись Jimmy Choo для оформления заказа?</h3>
-                </div>
-                <div class="cms_accordion_content">
-                    <p>Для совершения покупки не обязательно создавать учетную запись. Однако мы рекомендуем создать учетную запись Jimmy Choo, чтобы воспользоваться преимуществами управления своей учетной записью, включая сохранение информации об оплате, адресных данных и просмотр истории заказов.</p>
-                </div>
-            </div>
-            <div class="cms_accordion_group">
-                <div class="js-keyboard-clickable cms_accordion_title">
-                    <h3 class="cms_accordion_name">Какой размер мне выбрать?</h3>
-                </div>
-                <div class="cms_accordion_content">
-                    <p>Обувь Jimmy Choo соответствует итальянской размерной сетке и идет в размер. Пожалуйста, обратитесь к нашему <a href="https://www.jimmychoo.com/en/customer-services/footer-size-guide.html">размерному руководству</a> для получения дополнительной информации. Эта информация также доступна на страницах отдельных товаров.</p>
-                </div>
-            </div>
-            <div class="cms_accordion_group">
-                <div class="js-keyboard-clickable cms_accordion_title">
-                    <h3 class="cms_accordion_name">Могу ли я заказать по телефону?</h3>
-                </div>
-                <div class="cms_accordion_content">
-                    <p>Если вы предпочитаете сделать заказ по телефону, вы можете связаться с нашей службой поддержки клиентов по номеру 0080049294929 или через Live Chat.</p>
-                </div>
-            </div>
-           <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Как работает функция "Уведомить меня"?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>В выпадающем списке размеров на странице товара будет указано, доступен ли ваш размер для покупки или "Нет в наличии". Если товар отсутствует на складе, вам может быть предложена опция "Уведомить меня". Выбрав её, вы можете выбрать предпочитаемый размер и ввести свой адрес электронной почты, чтобы получить уведомление, когда товар станет доступен онлайн.</p>
-                    </div>
-                </div>
+            {% for faq in faqs %}
                 <div class="cms_accordion_group">
                     <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Могу ли я добавить подарочную упаковку к своему заказу?</h3>
+                        <h3 class="cms_accordion_name">{{ faq.question }}</h3>
                     </div>
                     <div class="cms_accordion_content">
-                        <p>Хотя мы не можем предоставить специальную подарочную упаковку для онлайн-заказов, каждый товар поставляется в фирменной упаковке. Обувь будет поставляться в оригинальной коробке, завернутой в роскошную бумагу. Сумки аккуратно упакованы в защитный мешок Jimmy Choo. Мелкие кожаные изделия будут упакованы в коробку и мешок Jimmy Choo.</p>
+                        <p>{{ faq.answer }}</p>
                     </div>
                 </div>
-                <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Могу ли я добавить подарочное сообщение к своему заказу?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>Вы можете персонализировать свой заказ с помощью подарочного сообщения. Посетите свою корзину перед оформлением заказа и выберите, что ваш заказ является подарком, чтобы продолжить. Пожалуйста, обратите внимание, что для целей доставки и таможни, к сожалению, мы не можем удалить цены из документов с вашим заказом.</p>
-                    </div>
-                </div>
-                <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Могу ли я изменить свое подарочное сообщение после оформления заказа?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>Хотя мы не можем гарантировать это, в зависимости от прогресса вашего заказа мы можем изменить подарочное сообщение. Пожалуйста, свяжитесь с нашей службой поддержки клиентов с деталями, которые вы хотите изменить, и мы постараемся это сделать, если это возможно.</p>
-                    </div>
-                </div>
-                <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Как я узнаю, что мой заказ был успешно оформлен?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>После оформления заказа вы получите подтверждение по электронной почте. Как только данные будут проверены, ваш заказ будет принят, и товар будет отправлен.</p>
-                    </div>
-                </div>
-                <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Могу ли я отменить или изменить данные своего заказа?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>Мы не можем изменить данные, но можем помочь вам отменить и заново оформить заказ. Для покупок на заказ из-за их индивидуального характера у вас есть 48 часов для изменения деталей монограммы или размера товара. Обратите внимание, что мы не можем добавить товар к заказу или объединить два заказа в одну доставку. Для получения дополнительной информации, пожалуйста, свяжитесь с <a href="https://www.jimmychoo.com/en/contact-us">службой поддержки клиентов</a>.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="cms_accordion">
-                <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Что такое предзаказ?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>Предзаказ - это резервирование товара нового сезона, который еще не поступил в продажу, но скоро будет доступен. Мы доставим товар по вашему предпочтительному адресу доставки, как только он станет доступен.</p>
-                    </div>
-                </div>
-                <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Как оформить предзаказ?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>Товары для предзаказа четко обозначены. Просто добавьте понравившиеся стили в свою корзину и оформите заказ, как обычно.</p>
-                    </div>
-                </div>
-                <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Что происходит, если я покупаю товар на предзаказ и товар, который уже есть в наличии, вместе?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>Если вы покупаете товары на предзаказ и товары, которые уже доступны на сайте, мы сначала отправим вам доступный товар. Это означает, что вы получите две отдельные посылки.</p>
-                    </div>
-                </div>
-                <div class="cms_accordion_group">
-                    <div class="js-keyboard-clickable cms_accordion_title">
-                        <h3 class="cms_accordion_name">Как производится оплата за предзаказ?</h3>
-                    </div>
-                    <div class="cms_accordion_content">
-                        <p>Оплата производится сразу после оформления предзаказа. Если товар недоступен в течение 10 дней, мы автоматически отменим ваш заказ и вернем вам деньги.</p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
     </div>
 </div>
 <script>

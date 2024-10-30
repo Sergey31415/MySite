@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from main.models import Product
+from main.models import Product, Answers_and_Questions
 
 
 def index(request):
@@ -29,7 +29,8 @@ def login(request):
 
 
 def faq(request):
-    return render(request, 'main/faq.html')
+    faqs = Answers_and_Questions.objects.all()
+    return render(request, 'main/faq.html', {'faqs': faqs})
 
 
 def pay(request):
