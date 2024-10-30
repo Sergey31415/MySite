@@ -35,6 +35,7 @@ class Answers_and_Questions(models.Model):
 
     def __str__(self):
         return self.question
+
     class Meta:
         verbose_name = "Вопросы и ответы"
         verbose_name_plural = "Вопросы и ответы"
