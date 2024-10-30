@@ -2,6 +2,18 @@
 
 {% block title %}
 Корзина
+    <h2>Корзина</h2>
+{% if cart %}
+    <ul>
+        {% for item in cart %}
+            <li>{{ item.product.name }} - {{ item.quantity }} x {{ item.price }} руб. = {{ item.total_price }} руб.</li>
+        {% endfor %}
+    </ul>
+    <p>Общая сумма: {{ cart.get_total_price }} руб.</p>
+{% else %}
+    <p>Ваша корзина пуста</p>
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
